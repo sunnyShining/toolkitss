@@ -1,0 +1,24 @@
+{
+  "name": "@toolkitss/%moduleName%",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "typings": "dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "../../node_modules/.bin/rollup -c ../../scripts/rollup.config.js",
+    "jest": "jest"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunnyShining/toolkitss.git"
+  },
+  "author": "sunny<17765293970@163.com>",
+  "bugs": {
+    "url": "https://github.com/sunnyShining/toolkitss/issues"
+  },
+  "homepage": "https://github.com/sunnyShining/toolkitss/tree/master/packages/%moduleName%#readme"
+}
