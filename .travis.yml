@@ -12,12 +12,12 @@ before_install:
 before_script:
   - yarn run lerna run prepublish
 script:
-  - yarn test
+  - yarn jest
 before_deploy:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
 deploy:
   provider: script
-  script: "yarn run lerna:publish"
+  script: "yarn run publish-all"
   skip_cleanup: true
   api_key: $NPM_TOKEN
   on:
