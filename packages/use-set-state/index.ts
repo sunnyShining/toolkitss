@@ -1,11 +1,8 @@
 import React from 'react'
-import { toRawType, uuid, invariant } from '@toolkitss/helper'
+import { toRawType, invariant, noop } from '@toolkitss/helper'
+import { useUpdate } from '@toolkitss/custom-hook'
 
-const { useRef, useState, useEffect } = React
-
-function noop() {
-  /** pass */
-}
+const { useRef, useEffect } = React
 
 export default function useSetState<S = object>(
   initSate: S,
@@ -20,7 +17,7 @@ export default function useSetState<S = object>(
   invariant(toRawType(initSate) === 'Object', 'initState should be a object')
   const state = useRef<S>(initSate)
   const updated = useRef<Function>(initCallback || noop)
-  const [, setUpdate] = useState()
+  const update = useUpdate()
   /** make sure update */
   const setState = (
     nextState: Partial<S> | ((prevState: S) => Partial<S>),
@@ -33,7 +30,7 @@ export default function useSetState<S = object>(
     const updateState =
       typeof nextState === 'function' ? nextState(state.current) : nextState
     Object.assign(state.current || {}, updateState)
-    setUpdate(uuid())
+    update()
     if (callback) {
       updated.current = callback
     }

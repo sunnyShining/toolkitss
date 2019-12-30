@@ -14,7 +14,8 @@
     "setState"
   ],
   "dependencies": {
-    "@toolkitss/helper": "^0.0.14"
+    "@toolkitss/helper": "^0.0.14",
+    "@toolkitss/custom-hook": "^0.0.1"
   },
   "peerDependencies": {
     "react": ">=16.8.3"

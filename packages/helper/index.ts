@@ -6,3 +6,7 @@ export * from './is'
 export * from './mix'
 /** 警告 */
 export * from './warn'
+
+export function noop() {
+  /** pass */
+}
