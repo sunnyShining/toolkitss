@@ -1,6 +1,6 @@
 {
   "name": "@toolkitss/use-set-state",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "setState",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -14,7 +14,7 @@
     "setState"
   ],
   "dependencies": {
-    "@toolkitss/custom-hook": "^0.0.2",
+    "@toolkitss/custom-hook": "^0.0.3",
     "@toolkitss/helper": "^0.0.15"
   },
   "peerDependencies": {
