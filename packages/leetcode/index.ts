@@ -4,9 +4,15 @@
  * @return {string}
  */
 export const reverseWords = (s: string) => {
-  return s.split(/\s/).map(a => {
-    return a.split('').reverse().join('')
-  }).join(' ')
+  return s
+    .split(/\s/)
+    .map(a => {
+      return a
+        .split('')
+        .reverse()
+        .join('')
+    })
+    .join(' ')
 }
 
 /**
@@ -18,7 +24,7 @@ export const reverseWords = (s: string) => {
 export const countBinarySubstrings = (s: string) => {
   const arr = []
   /** 计算match */
-  const match = (str) => {
+  const match = str => {
     const j = str.match(/^(0+|1+)/)[0]
     const o = (j[0] ^ 1).toString().repeat(j.length)
     const reg = new RegExp(`^(${j}${o})`)
@@ -48,7 +54,7 @@ export const letterCombinations = (digits: string) => {
   const code: string[] = num.map(n => {
     return map[n]
   })
-  const comb = (arr) => {
+  const comb = arr => {
     const temp = []
     for (let i = 0, il = arr[0].length; i < il; i++) {
       for (let j = 0, jl = arr[1].length; j < jl; j++) {

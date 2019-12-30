@@ -11,17 +11,11 @@ const App: React.FC = () => {
   const [key, updateKey] = useUpdateKey()
   return (
     <div>
-      <button
-        className="change"
-        onClick={() => updateKey()}
-      >
+      <button className="change" onClick={() => updateKey()}>
         change
       </button>
       <span className="name">{key}</span>
-      <button
-        className="change2"
-        onClick={() =>updateKey('me')}
-      >
+      <button className="change2" onClick={() => updateKey('me')}>
         change2
       </button>
       <span className="age">{key}</span>
