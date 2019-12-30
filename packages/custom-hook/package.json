@@ -1,6 +1,6 @@
 {
   "name": "@toolkitss/custom-hook",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -25,6 +25,6 @@
     "react": ">=16.8.3"
   },
   "dependencies": {
-    "@toolkitss/helper": "^0.0.14"
+    "@toolkitss/helper": "^0.0.15"
   }
 }

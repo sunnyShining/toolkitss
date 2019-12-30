@@ -1,6 +1,6 @@
 {
   "name": "@toolkitss/helper",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "usefull function",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
