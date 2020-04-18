@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, HashRouter as Router, Switch, Redirect, Link } from 'react-router-dom'
+import { Route, HashRouter as Router, Switch, Link } from 'react-router-dom'
 import { SetState, ForceUpdate } from './custom-hook'
 
 const routerConfig = [
@@ -38,7 +38,6 @@ export const Routers = () => {
           routerConfig.map(r => <Route key={r.name} exact={r.exact} path={r.path} component={r.component} />)
         }
         <Route exact path='/nav' component={Nav} />
-        <Redirect from='/' to='/nav' />
       </Switch>
     </Router>
   )

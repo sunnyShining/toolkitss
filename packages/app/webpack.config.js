@@ -84,25 +84,44 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: [{
-          loader: MiniCssExtractPlugin.loader,
-          options: {
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
             // if hmr does not work, this is a forceful method.
-            reloadAll: true,
-            hmr: true
-          }
-        }, 'css-loader', 'less-loader']
+              reloadAll: true,
+              hmr: true
+            }
+          },
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          'less-loader'
+        ]
       },
       {
         test: /\.css$/,
-        use: [{
-          loader: MiniCssExtractPlugin.loader,
-          options: {
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
             // if hmr does not work, this is a forceful method.
-            reloadAll: true,
-            hmr: true
+              reloadAll: true,
+              hmr: true
+            }
+          },
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
           }
-        }, 'css-loader']
+        ]
       },
       {
         test: /\.(svg|ttf|eot)$/,
