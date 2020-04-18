@@ -10,11 +10,11 @@
     "build:dev": "cross-env NODE_ENV=development npx lerna run build",
     "jest": "npx lerna run jest",
     "prettier": "prettier --write './packages/**/*.ts' './packages/**/*.tsx' --config ./.prettierrc",
-    "publish-all": "yarn build && npx lerna publish patch -y --registry http://registry.npmjs.org",
+    "publish-all": "yarn build && npx lerna publish --no-push -y --registry http://registry.npmjs.org",
     "lint-message": "echo 'Lint code before commit, refuse if error occurred'",
     "lint": "npx eslint ./**/*.ts",
     "fix": "npx eslint ./**/*.ts --fix",
-    "start:app": "yarn --cwd ./app run update  && yarn --cwd ./app run start",
+    "start:app": "lerna run start --scope=@toolkitss/app --stream",
     "new": "npx ts-node --project scripts/tsconfig.json scripts/new/index.ts"
   },
   "workspaces": [
@@ -70,7 +70,7 @@
     "inquirer": "^7.0.0",
     "jest": "^24.9.0",
     "jest-environment-enzyme": "^7.1.2",
-    "lerna": "^3.19.0",
+    "lerna": "^3.20.2",
     "lerna-ci": "^0.0.4",
     "lint-staged": "^9.5.0",
     "postcss-clean": "^1.1.0",
@@ -95,8 +95,10 @@
   },
   "lerna-ci": {
     "syncremote": [
-      "@toolkitss/helper",
-      "@toolkitss/use-set-state"
+      "@toolkitss/custom-hook"
     ]
+  },
+  "dependencies": {
+    "antd": "^4.1.3"
   }
 }

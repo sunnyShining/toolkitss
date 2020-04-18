@@ -1,35 +1,13 @@
-# @toolkitss/use-set-state
-
-> setState hook
-
-# Installation
-
-## Using npm:
-
-```zsh
-$ npm i -g npm
-$ npm i --save @toolkitss/use-set-state
-```
-
-## Using yarn:
-
-```zsh
-$ yarn add @toolkitss/use-set-state
-```
-
-## Usage
-
-```tsx
-import React from 'react';
-import useSetState from '@toolkitss/use-set-state'
-import { Button, Input } from 'antd'
+import React, { useRef } from 'react'
+import { useSetState, useForceUpdate } from '../../custom-hook/index'
+import { Input, Button } from 'antd'
 
 interface IState {
   age: number
   name: string
 }
 
-const SetStateTest: React.FC = () => {
+export const SetState: React.FC = () => {
   /** init setState */
   const [state, setState] = useSetState<IState>({
     name: 'sunny',
@@ -70,10 +48,27 @@ const SetStateTest: React.FC = () => {
       })}>update all</Button>
       <Button onClick={update}>function update</Button>
     </div>
-  );
+  )
 }
 
-export default SetStateTest;
+export const ForceUpdate: React.FC = () => {
+  const number = useRef<number>(18)
+  const [, forceUpdate] = useForceUpdate()
+
+  const add = () => {
+    number.current = ++number.current
+  }
+  // 测试强制更新
+  const testForceUpdate = () => {
+    forceUpdate()
+  }
+  return (
+    <div className="forUpdate">
+      <span>{number.current}</span>
+      <Button onClick={add}>add</Button>
+      <Button onClick={testForceUpdate}>force update</Button>
+    </div>
+  )
+}
 
 
-```

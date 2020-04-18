@@ -1,7 +1,7 @@
 {
   "name": "@toolkitss/custom-hook",
   "version": "0.0.3",
-  "description": "",
+  "description": "custom hook setState forceUpdate",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "typings": "dist/index.d.ts",

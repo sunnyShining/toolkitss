@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import useSetState from '../index'
+import { useSetState } from '../index'
 
 interface IState {
   age: number

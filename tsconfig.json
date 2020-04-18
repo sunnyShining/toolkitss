@@ -18,10 +18,7 @@
     // 目标文件所在路径
     "outDir": "./lib",
     // 编译过程中需要引入的库文件的列表
-    "lib": [
-      "dom",
-      "es7"
-    ],
+    "lib": ["DOM", "ES2016"],
     "noImplicitReturns": true,
     "noUnusedLocals": false,
     "jsx": "react",
