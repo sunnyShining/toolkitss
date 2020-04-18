@@ -1,6 +1,6 @@
 # @toolkitss/custom-hook
 
-> 一些常用的自定义hook
+> some useful custom hook
 
 # Installation
 
@@ -20,16 +20,16 @@ $ yarn add @toolkitss/custom-hook
 ## Usage
 
 ```tsx
-import React from 'react';
+import React, { useRef } from 'react'
 import { useSetState, useForceUpdate } from '@toolkitss/custom-hook'
-import { Button, Input } from 'antd'
+import { Input, Button } from 'antd'
 
 interface IState {
   age: number
   name: string
 }
 
-const SetStateTest: React.FC = () => {
+export const SetState: React.FC = () => {
   /** init setState */
   const [state, setState] = useSetState<IState>({
     name: 'sunny',
@@ -37,7 +37,6 @@ const SetStateTest: React.FC = () => {
   }, () => {
     console.log('init')
   })
-  const [, forceUpdate] = useForceUpdate()
   /** 受控组件 */
   const edit = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value
@@ -59,10 +58,6 @@ const SetStateTest: React.FC = () => {
       console.log('updated2222')
     })
   }
-  // 测试强制更新
-  const testForceUpdate = () => {
-    forceUpdate()
-  }
   return (
     <div className="setState">
       <Input value={state.name} onChange={edit} />
@@ -74,11 +69,28 @@ const SetStateTest: React.FC = () => {
         age: 30
       })}>update all</Button>
       <Button onClick={update}>function update</Button>
-      <Button onClick={testForceUpdate}>force update</Button>
     </div>
-  );
+  )
 }
 
-export default SetStateTest;
+export const ForceUpdate: React.FC = () => {
+  const number = useRef<number>(18)
+  const [, forceUpdate] = useForceUpdate()
+
+  const add = () => {
+    number.current = ++number.current
+  }
+  // 测试强制更新
+  const testForceUpdate = () => {
+    forceUpdate()
+  }
+  return (
+    <div className="forUpdate">
+      <span>{number.current}</span>
+      <Button onClick={add}>add</Button>
+      <Button onClick={testForceUpdate}>force update</Button>
+    </div>
+  )
+}
 
 ```
