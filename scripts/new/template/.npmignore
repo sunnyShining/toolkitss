@@ -1,0 +1,6 @@
+.rpt2_cache
+.size-snapshot.json
+/*.ts
+*.log
+*.tgz
+__test__
