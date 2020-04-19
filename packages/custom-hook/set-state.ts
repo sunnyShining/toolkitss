@@ -1,5 +1,5 @@
 import { useReducer, useRef, useEffect, useCallback  } from 'react'
-import { toRawType, invariant, noop } from '@toolkitss/helper'
+import { toRawType, invariant } from '@toolkitss/helper'
 
 function setStateReducer<S>(
   state: S,
@@ -26,13 +26,13 @@ export function useSetState<S = object>(
     S,
     (
       nextSate: Partial<S> | ((prevState: S) => Partial<S>),
-      callback?: Function
+      callback?: (state: S) => any
     ) => void
   ] {
   // @ts-ignore
   invariant(toRawType(initSate) === 'Object', 'initState should be a object')
   const [state, dispatch] = useReducer<(state: S, action: {type: 'update'; nextState: Partial<S>;}) => S>(setStateReducer, initSate)
-  const updated = useRef<Function>(initCallback || noop)
+  const updated = useRef<((state: S) => any) | undefined>(initCallback)
   /** make sure update */
   const setState = useCallback((
     nextState: Partial<S> | ((prevState: S) => Partial<S>),
@@ -53,10 +53,9 @@ export function useSetState<S = object>(
     }
   }, [])
   useEffect(() => {
-    if (updated.current !== noop && typeof updated.current === 'function') {
+    if (typeof updated.current === 'function') {
       updated.current(state)
     }
-    return noop
   }, [updated.current])
   return [state, setState]
 }
