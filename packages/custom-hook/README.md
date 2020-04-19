@@ -21,7 +21,7 @@ $ yarn add @toolkitss/custom-hook
 
 ```tsx
 import React, { useRef } from 'react'
-import { useSetState, useForceUpdate } from '@toolkitss/custom-hook'
+import { useSetState, useForceUpdate, useErrorBoundary } from '@toolkitss/custom-hook'
 import { Input, Button } from 'antd'
 
 interface IState {
@@ -89,6 +89,26 @@ export const ForceUpdate: React.FC = () => {
       <span>{number.current}</span>
       <Button onClick={add}>add</Button>
       <Button onClick={testForceUpdate}>force update</Button>
+    </div>
+  )
+}
+
+// @ts-ignore
+const ErrorC = () => <Button>{a}</Button>
+
+export const ErrorBoundaryTest: React.FC = () => {
+  const { captureError, ErrorBoundary } = useErrorBoundary()
+  console.log(captureError)
+  return (
+    <div>
+      <ErrorBoundary
+        renderError={props => {
+          console.log('renderError', props)
+          return <div>render Error</div>
+        }}
+      >
+        <ErrorC />
+      </ErrorBoundary>
     </div>
   )
 }

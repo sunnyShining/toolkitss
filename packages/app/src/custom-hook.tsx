@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useSetState, useForceUpdate } from '../../custom-hook/index'
+import { useSetState, useForceUpdate, useErrorBoundary } from '../../custom-hook/index'
 import { Input, Button } from 'antd'
 
 interface IState {
@@ -70,5 +70,23 @@ export const ForceUpdate: React.FC = () => {
     </div>
   )
 }
+// @ts-ignore
+const ErrorC = () => <Button>{a}</Button>
 
+export const ErrorBoundaryTest: React.FC = () => {
+  const { captureError, ErrorBoundary } = useErrorBoundary()
+  console.log(captureError)
+  return (
+    <div>
+      <ErrorBoundary
+        renderError={props => {
+          console.log('renderError', props)
+          return <div>render Error</div>
+        }}
+      >
+        <ErrorC />
+      </ErrorBoundary>
+    </div>
+  )
+}
 

@@ -37,3 +37,9 @@ $ yarn lint/fix
 ```sh
 $ yarn build
 ```
+
+# 启动应用测试
+
+```
+$ yarn start:app
+```

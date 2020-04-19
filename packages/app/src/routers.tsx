@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, HashRouter as Router, Switch, Link } from 'react-router-dom'
-import { SetState, ForceUpdate } from './custom-hook'
+import { SetState, ForceUpdate, ErrorBoundaryTest } from './custom-hook'
 
 const routerConfig = [
   {
@@ -14,6 +14,12 @@ const routerConfig = [
     exact: true,
     name: 'forceUpdate',
     component: ForceUpdate
+  },
+  {
+    path: '/errorBoundary',
+    exact: true,
+    name: 'errorBoundary',
+    component: ErrorBoundaryTest
   }
 ]
 
