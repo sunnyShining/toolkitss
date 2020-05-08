@@ -10,3 +10,6 @@ export * from './warn'
 export function noop() {
   /** pass */
 }
+
+/** 空对象避免多次创建无用的空对象 */
+export const emptyObj = {}

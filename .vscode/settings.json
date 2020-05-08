@@ -1,7 +1,5 @@
 {
-  "git.ignoreLimitWarning": true,
   "files.eol": "\n",
-  "typescript.tsdk": "node_modules/typescript/lib",
   "editor.formatOnSave": true,
   "typescript.updateImportsOnFileMove.enabled": "never",
   "[javascript]": {
@@ -16,19 +14,6 @@
   "[typescriptreact]": {
     "editor.formatOnSave": false
   },
-  "eslint.autoFixOnSave": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    {
-      "language": "typescript",
-      "autoFix": true
-    },
-    {
-      "language": "typescriptreact",
-      "autoFix": true
-    }
-  ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   }

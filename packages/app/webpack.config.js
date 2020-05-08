@@ -65,6 +65,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /.(tsx?|jsx?)$/,
+        loader: 'eslint-loader',
+        include: resolvePath('src'),
+        exclude: /node_modules/,
+        enforce: 'pre',
+        options: {
+          fix: true,
+        }
+      },
+      {
         test: /.tsx?$/,
         exclude: /node_modules/,
         use: [babelLoader, {
