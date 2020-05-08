@@ -7,8 +7,37 @@ const tsImportPluginFactory = require('ts-import-plugin')
 
 const resolvePath = (p) => path.resolve(__dirname, p)
 
-const host = '127.0.0.1'
+const host = '0.0.0.0'
 const port = 3000
+
+const babelLoader = {
+  loader: 'babel-loader',
+  options: {
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          useBuiltIns: 'entry',
+          corejs: 3,
+          modules: 'cjs',
+          targets: {
+            browsers: [
+              'Chrome >= 21',
+              'Ie >= 11 ',
+              'Firefox >= 1',
+              'Edge >=13 '
+            ]
+          }
+        }
+      ],
+      '@babel/preset-react'
+    ],
+    plugins: [
+      ['@babel/plugin-proposal-decorators', { 'legacy': true }],
+      ['@babel/plugin-proposal-class-properties', { 'loose': true }]
+    ]
+  }
+}
 
 module.exports = {
   mode: 'development',
@@ -36,51 +65,30 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /.tsx?$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ['@babel/preset-env', {
-                  'useBuiltIns': 'usage'
-                }], '@babel/preset-react']
-            }
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              // happyPackMode: true,
-              // typescripts配置文件
-              configFile: resolvePath('tsconfig.json'),
-              transpileOnly: false,
-              getCustomTransformers: () => ({
-                before: [
-                  tsImportPluginFactory(
-                    // https://www.npmjs.com/package/ts-import-plugin // antd按需加载
-                    { libraryName: 'antd', style: false }
-                  )
-                ]
-              })
-            }
+        use: [babelLoader, {
+          loader: 'ts-loader',
+          options: {
+            // happyPackMode: true,
+            // typescripts配置文件
+            configFile: resolvePath('tsconfig.json'),
+            transpileOnly: false,
+            getCustomTransformers: () => ({
+              before: [
+                tsImportPluginFactory(
+                  // https://www.npmjs.com/package/ts-import-plugin // antd按需加载
+                  { libraryName: 'antd', style: false }
+                )
+              ]
+            })
           }
-        ]
+        }]
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ['@babel/preset-env', {
-                  'useBuiltIns': 'usage'
-                }]]
-            }
-          }
-        ]
+        use: [babelLoader]
       },
       {
         test: /\.less$/,
