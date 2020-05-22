@@ -18,6 +18,17 @@ function setStateReducer<S>(
       return state
   }
 }
+const logger = (reducer) => {
+  if (process.env.NODE_ENV === 'development') {
+    return (state, action) => {
+      console.log('%cPrevious State:', 'color: #9E9E9E; font-weight: 700;', state)
+      console.log('%cAction:', 'color: #00A7F7; font-weight: 700;', action)
+      console.log('%cNext State:', 'color: #47B04B; font-weight: 700;', reducer(state,action))
+      return reducer(state,action)
+    }
+  }
+  return reducer
+}
 // can use useReducer do it
 export function useSetState<S = object>(
   initSate: S,
@@ -31,7 +42,7 @@ export function useSetState<S = object>(
   ] {
   // @ts-ignore
   invariant(toRawType(initSate) === 'Object', 'initState should be a object')
-  const [state, dispatch] = useReducer<(state: S, action: {type: 'update'; nextState: Partial<S>;}) => S>(setStateReducer, initSate)
+  const [state, dispatch] = useReducer<(state: S, action: {type: 'update'; nextState: Partial<S>;}) => S>(logger(setStateReducer), initSate)
   const updated = useRef<((state: S) => any) | undefined>(initCallback)
   /** make sure update */
   const setState = useCallback((
