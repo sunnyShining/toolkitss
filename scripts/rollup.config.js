@@ -61,6 +61,7 @@ export default {
       amd: {
         id: pkg.name
       },
+      banner,
       format: 'cjs',
       file: path.join(pkgDir, 'dist/index.cjs.js'),
       sourcemap: false
@@ -71,6 +72,7 @@ export default {
       amd: {
         id: pkg.name
       },
+      banner,
       format: 'es',
       file: path.join(pkgDir, 'dist/index.es.js'),
       sourcemap: false
@@ -80,7 +82,7 @@ export default {
     rollupDel(path.join(pkgDir, 'dist')), /** 删除dist文件 */
     replace({
       __VERSION__: pkg.version,
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
+      // 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
     }),
     commonjs({
       include: ['node_modules/**', '**/node_modules/**'],

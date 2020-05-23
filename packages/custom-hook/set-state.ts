@@ -19,6 +19,7 @@ function setStateReducer<S>(
   }
 }
 const logger = (reducer) => {
+  // @ts-ignore
   if (process.env.NODE_ENV === 'development') {
     return (state, action) => {
       console.log('%cPrevious State:', 'color: #9E9E9E; font-weight: 700;', state)

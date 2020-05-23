@@ -6,8 +6,7 @@
   "private": true,
   "scripts": {
     "postinstall": "lerna bootstrap",
-    "build": "cross-env NODE_ENV=production npx lerna run build",
-    "build:dev": "cross-env NODE_ENV=development npx lerna run build",
+    "build": "cross-env npx lerna run build",
     "jest": "npx lerna run jest",
     "prettier": "prettier --write './packages/**/*.ts' './packages/**/*.tsx' --config ./.prettierrc",
     "publish-all": "yarn build && npx lerna publish --no-push -y --registry http://registry.npmjs.org",
