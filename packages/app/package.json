@@ -1,6 +1,6 @@
 {
   "name": "@toolkitss/app",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -33,7 +33,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "@toolkitss/custom-hook": "^0.0.6",
+    "@toolkitss/custom-hook": "^0.0.7",
     "@toolkitss/helper": "^0.0.14",
     "antd": "^4.1.3",
     "react": "^16.13.1",
