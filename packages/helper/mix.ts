@@ -8,11 +8,7 @@ import { toArray } from './utils'
  */
 function mix(dist, obj) {
   for (const key in obj) {
-    if (
-      obj.hasOwnProperty(key) &&
-      key !== 'constructor' &&
-      obj[key] !== undefined
-    ) {
+    if (obj.hasOwnProperty(key) && key !== 'constructor' && obj[key] !== undefined) {
       dist[key] = obj[key]
     }
   }

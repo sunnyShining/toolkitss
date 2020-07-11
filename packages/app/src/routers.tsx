@@ -26,11 +26,13 @@ const routerConfig = [
 export const Nav: React.FC = () => {
   return (
     <div>
-      {
-        routerConfig.map(r => {
-          return <p key={r.name}><Link to={r.path}>{r.name}</Link></p>
-        })
-      }
+      {routerConfig.map(r => {
+        return (
+          <p key={r.name}>
+            <Link to={r.path}>{r.name}</Link>
+          </p>
+        )
+      })}
     </div>
   )
 }
@@ -40,12 +42,11 @@ export const Routers = () => {
     <Router>
       <Nav />
       <Switch>
-        {
-          routerConfig.map(r => <Route key={r.name} exact={r.exact} path={r.path} component={r.component} />)
-        }
-        <Route exact path='/nav' component={Nav} />
+        {routerConfig.map(r => (
+          <Route key={r.name} exact={r.exact} path={r.path} component={r.component} />
+        ))}
+        <Route exact path="/nav" component={Nav} />
       </Switch>
     </Router>
   )
 }
-

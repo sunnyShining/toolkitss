@@ -27,8 +27,7 @@ export const isArrayLike = value =>
  * 处理数组和类数组
  * @param arr 需要处理的变量
  */
-export const toArray = arr =>
-  isArrayLike(arr) ? Array.prototype.slice.call(arr) : []
+export const toArray = arr => (isArrayLike(arr) ? Array.prototype.slice.call(arr) : [])
 
 /**
  * 获取url search对应的值

@@ -8,11 +8,11 @@
     "postinstall": "lerna bootstrap",
     "build": "cross-env npx lerna run build",
     "jest": "npx lerna run jest",
-    "prettier": "prettier --write './packages/**/*.ts' './packages/**/*.tsx' --config ./.prettierrc",
+    "prettier": "prettier --write './packages/**/*.{ts,tsx}' --config ./.prettierrc",
     "publish-all": "yarn build && npx lerna publish --no-push -y --registry http://registry.npmjs.org",
     "lint-message": "echo 'Lint code before commit, refuse if error occurred'",
-    "lint": "npx eslint ./**/*.ts",
-    "fix": "npx eslint ./**/*.ts --fix",
+    "lint": "npx eslint packages/**/*.{ts,tsx}",
+    "fix": "npx eslint packages/**/*.{ts,tsx} --fix",
     "start:app": "lerna run start --scope=@toolkitss/app --stream",
     "new": "npx ts-node --project scripts/tsconfig.json scripts/new/index.ts"
   },
@@ -26,9 +26,9 @@
     }
   },
   "lint-staged": {
-    "*.{ts}": [
+    "*.{ts,tsx}": [
       "yarn prettier",
-      "yarn fix",
+      "yarn lint",
       "git add"
     ]
   },
@@ -62,9 +62,11 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-flowtype": "^4.5.2",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.3.0",
     "fs-extra": "^8.1.0",

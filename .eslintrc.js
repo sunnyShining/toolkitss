@@ -1,11 +1,18 @@
+const OFF = 0
+const WARNING = 1
+const ERROR = 2
+
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
-    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended'
   ],
   plugins: [
-    '@typescript-eslint'
+    '@typescript-eslint',
+    'react'
   ],
   settings: {
     "react": {
@@ -28,15 +35,13 @@ module.exports = {
         null: 'ignore'
       }
     ],
-    "prefer-rest-params": ["error"],
-    "semi": ["error", "never"],
-    "@typescript-eslint/indent": ["error", 2],
-    "quotes": ["error", "single"],
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-var-requires": "off",
-    "@typescript-eslint/member-delimiter-style": "off",
-    "@typescript-eslint/ban-ts-ignore": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/interface-name-prefix": "off"
+    "prefer-rest-params": [ERROR],
+    "semi": [ERROR, "never"],
+    "@typescript-eslint/explicit-function-return-type": OFF,
+    "@typescript-eslint/no-var-requires": OFF,
+    "@typescript-eslint/member-delimiter-style": OFF,
+    "@typescript-eslint/ban-ts-ignore": OFF,
+    "@typescript-eslint/no-explicit-any": OFF,
+    "@typescript-eslint/interface-name-prefix": OFF
   }
 }
